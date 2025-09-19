@@ -8,10 +8,10 @@ export default function ShoeModel({ sectionIndex, isMobile, variant }) {
   const [sceneObj, setSceneObj] = useState(null);
 
   // ✅ Load all models at top level
-  const redModel = useGLTF("/models/nike.glb");
-  const blueModel = useGLTF("/models/blue_nike_2.glb");
-  const greenModel = useGLTF("/models/blue_nike_1.glb");
-  const yellowModel = useGLTF("/models/nike_air_zoom.glb");
+  const redModel = useGLTF("./models/nike.glb");
+  const blueModel = useGLTF("./models/blue_nike_2.glb");
+  const greenModel = useGLTF("./models/blue_nike_1.glb");
+  const yellowModel = useGLTF("./models/nike_air_zoom.glb");
 
   // Base rotations to normalize all models
 const baseRotations = {
