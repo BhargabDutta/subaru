@@ -1,19 +1,67 @@
 // src/components/Section.jsx
-export default function Section({ title, subtitle, align = "center" }) {
-    const alignment =
-      align === "right"
-        ? "ml-auto text-right"
-        : align === "left"
-        ? "mr-auto text-left"
-        : "mx-auto text-center";
-  
-    return (
-      <section className="h-screen flex items-center px-6 md:px-20">
-        <div className={`max-w-2xl ${alignment}`}>
-          <h2 className="text-4xl md:text-6xl font-extrabold mb-4">{title}</h2>
-          <p className="text-lg md:text-2xl text-gray-400">{subtitle}</p>
-        </div>
-      </section>
-    );
+import { motion } from "framer-motion";
+import Fog from "./Fog";
+
+const container = {
+  hidden: { opacity: 0, filter: "blur(10px)" },
+  visible: {
+    opacity: 1, filter: "blur(0px)",
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+  },
+};
+
+const mistReveal = {
+  hidden: {
+    opacity: 0,
+    filter: "blur(14px)",
+    clipPath: "circle(8% at 50% 50%)",
+  },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+    clipPath: "circle(140% at 50% 50%)",
+    transition: { duration: 1.0, ease: [0.22, 1, 0.36, 1], delay: 0.05 }
   }
-  
+};
+
+export default function Section({ title, subtitle, align = "center", isActive = false }) {
+  const alignment =
+    align === "right"
+      ? "items-end text-right ml-auto"
+      : align === "left"
+      ? "items-start text-left mr-auto"
+      : "items-center text-center mx-auto";
+
+  return (
+    <div className="relative h-screen w-full flex items-center px-6 md:px-20">
+      {/* <Fog active={isActive} /> */}
+
+      <motion.section
+        className={`relative w-full max-w-2xl ${alignment}
+          pointer-events-${isActive ? "auto" : "none"}`}
+        initial="hidden"
+        animate={isActive ? "visible" : "hidden"}
+        variants={container}
+        aria-hidden={isActive ? "false" : "true"}
+        role="region"
+      >
+        {title && (
+          <motion.h2
+            variants={mistReveal}
+            className="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg"
+          >
+            {title}
+          </motion.h2>
+        )}
+        {subtitle && (
+          <motion.p
+            variants={mistReveal}
+            className="text-lg md:text-2xl/relaxed text-gray-200/90"
+          >
+            {subtitle}
+          </motion.p>
+        )}
+      </motion.section>
+    </div>
+  );
+}
