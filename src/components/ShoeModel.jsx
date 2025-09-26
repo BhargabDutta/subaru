@@ -3,69 +3,98 @@ import { useFrame } from "@react-three/fiber";
 import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 
-export default function ShoeModel({ sectionIndex, isMobile, variant }) {
+export default function ShoeModel({
+  sectionIndex,
+  isMobile,
+  modelPath = "/models/fantasy_town.glb", // <-- change this or pass prop
+}) {
   const groupRef = useRef();
   const [sceneObj, setSceneObj] = useState(null);
 
-  // ✅ Load all models at top level
-  const redModel = useGLTF("./models/nike.glb");
-  const blueModel = useGLTF("./models/blue_nike_2.glb");
-  const greenModel = useGLTF("./models/blue_nike_1.glb");
-  const yellowModel = useGLTF("./models/nike_air_zoom.glb");
+  // Load single model
+  const gltf = useGLTF(modelPath);
 
-  // Base rotations to normalize all models
-const baseRotations = {
-    red: [0, 0, 0],
-    blue: [0, 0, 0],
-    green: [0, 0, 0],  // Adjust this until it visually matches others
-    yellow: [0, Math.PI, 0],
-  };
-  
+  // Base rotations to normalize the model if needed
+  const baseRotation = [0, 0, 0];
 
-  // ✅ Update sceneObj when variant changes
+  // When model loads, clone its scene for safe mutation
   useEffect(() => {
-    let selected;
-    switch (variant) {
-      case "blue":
-        selected = blueModel;
-        break;
-      case "green":
-        selected = greenModel;
-        break;
-      case "yellow":
-        selected = yellowModel;
-        break;
-      case "red":
-      default:
-        selected = redModel;
-        break;
+    if (gltf && gltf.scene) {
+      setSceneObj(gltf.scene.clone());
     }
+  }, [gltf]);
 
-    // Clone to create a new instance
-    if (selected && selected.scene) {
-      setSceneObj(selected.scene.clone());
-    }
-  }, [variant, redModel, blueModel, greenModel, yellowModel]);
+  // (Optional) simple traversal log to inspect materials/textures
+  useEffect(() => {
+    if (!sceneObj) return;
+    console.groupCollapsed("[ShoeModel] scene traversal");
+    sceneObj.traverse((child) => {
+      if (child.isMesh) {
+        console.log("Mesh:", child.name || "(no name)");
+        const mat = child.material;
+        if (!mat) console.log(" -> no material");
+        else if (Array.isArray(mat)) mat.forEach((m, i) => console.log(` material[${i}]:`, m));
+        else console.log(" material:", mat, " map:", mat.map);
+      }
+    });
+    console.groupEnd();
+  }, [sceneObj]);
 
-  // Transforms per section
+  // Transforms per section (keep your existing values)
   const desktopTransforms = [
-    { position: [0, -0.2, 0], rotation: [0, 0, 0], scale: 2 },
-    { position: [-2, -0.2, 0], rotation: [0, 1, 0], scale: 2 },
-    { position: [2, 0, 0], rotation: [1, -1, 0.5], scale: 2 },
-    { position: [0, -0.25, 0], rotation: [-0.1, Math.PI, 0], scale: 1.8 },
+    { position: [0, -1, 0], rotation: [0, 1, 0], scale: 2 },
+    { position: [-2, -1, 0], rotation: [0, 1.5, 0], scale: 3 },
+    { position: [-3.5, -2, 0], rotation: [0, 1.5, 0], scale: 5 },
+    { position: [-5, -4, 0], rotation: [0, 1.5, 0], scale: 7 },
+    { position: [-7.5, -6, 0], rotation: [0, 1.5, 0], scale: 10 },
+    { position: [0.7, -3.2, 2], rotation: [0, 0, 0], scale: 5 },
+    { position: [0.7, -1, -5], rotation: [1, 0, 0], scale: 5 },
+    { position: [0.7, -1, -2], rotation: [1, 0, 0], scale: 5 },
+    { position: [0.7, -1, 1], rotation: [1, 0, 0], scale: 5 },
+    { position: [-1, -1.5, 4], rotation: [0, 0, 0], scale: 5 },
+    { position: [-1, -1.5, 7], rotation: [0, 0, 0], scale: 5 },
+    { position: [-2, -1.2, 7], rotation: [0, -1, 0], scale: 5 },
+    { position: [-2.5, -1.2, 6], rotation: [0, -1.5, 0], scale: 5 },
+    { position: [-2.5, -2, 5], rotation: [0.6, -1.5, 0], scale: 5 },
+    { position: [-2.5, -1.8, 7], rotation: [0.4, -1.5, 0], scale: 5 },
+    { position: [3, -1.2, -2], rotation: [0, -4.8, 0], scale: 5 },
+    { position: [0, -1, 0], rotation: [0, 1, 0], scale: 2 },
   ];
-  
-  const mobileTransforms = [
-    { position: [0, -0.1, 0], rotation: [0, 0, 0], scale: 2 },
-    { position: [0, -0.1, 0], rotation: [1, 0, 0], scale: 2.5 },
-    { position: [0, 0, 0], rotation: [0.5, -0.5, 0.2], scale: 3 },
-    { position: [0, -0.15, 0], rotation: [0, Math.PI, 0], scale: 1 },
-  ];
-  const transforms = isMobile ? mobileTransforms : desktopTransforms;
-  // const current = transforms[sectionIndex] || transforms[0];  
 
+  const mobileTransforms = [
+    { position: [0, -1, -1], rotation: [0, 1, 0], scale: 2 },
+    { position: [-2.5, -1, -1], rotation: [0, 1.5, 0], scale: 3 },
+    { position: [-4, -2, -1], rotation: [0, 1.5, 0], scale: 5 },
+    // { position: [-6, -4, -1], rotation: [0, 1.5, 0], scale: 7 },
+    // { position: [-8.5, -6, -1], rotation: [0, 1.5, 0], scale: 10 },
+    { position: [0.7, -3.8, 4], rotation: [0, 0, 0], scale: 5 },
+    { position: [0.7, -1, -5], rotation: [1, 0, 0], scale: 5 },
+    { position: [0.7, -1, -10], rotation: [1, 0, 0], scale: 5 },
+    { position: [0.7, -1, -20], rotation: [1, 0, 0], scale: 5 },
+    { position: [0, 1, -20], rotation: [1.5, 0, 0], scale: 5 },
+    { position: [0, 1, -30], rotation: [1.5, 0, 0], scale: 5 },
+    { position: [-2, 1, -30], rotation: [1.5, 0, 0], scale: 5 },
+
+    { position: [0, -3, -30], rotation: [0, 0, 0], scale: 5 },
+    
+    { position: [0, -3, -20], rotation: [0, -0.5, 0], scale: 5 },
+
+    { position: [0, -3, -20], rotation: [0, -1.5, 0], scale: 5 },
+    { position: [0, -3, -20], rotation: [0, -2.5, 0], scale: 5 },
+    { position: [0, -3, -20], rotation: [0, -3.5, 0], scale: 5 },
+
+
+    { position: [0, -3, -20], rotation: [0, -4.5, 0], scale: 5 },
+
+    { position: [0, -1, -20], rotation: [0, -5, 0], scale: 2 },
+  ];
+
+  const transforms = isMobile ? mobileTransforms : desktopTransforms;
   const scaleFactor = isMobile ? 0.7 : 1;
-  const current = transforms[sectionIndex] || transforms[0];
+  // const current = transforms[sectionIndex] || transforms[0];
+  const safeIndex = Math.max(0, Math.min(sectionIndex, transforms.length - 1));
+const current = transforms[safeIndex];
+
 
   useFrame((state) => {
     if (!groupRef.current) return;
@@ -74,16 +103,13 @@ const baseRotations = {
     const targetPos = new THREE.Vector3(...current.position).multiplyScalar(isMobile ? 0.6 : 1);
     groupRef.current.position.lerp(targetPos, 0.1);
 
-    // Get base rotation for current variant
-    const baseRot = baseRotations[variant] || [0, 0, 0];
-
     // Combine section rotation + base rotation
     const targetQuat = new THREE.Quaternion().setFromEuler(
-        new THREE.Euler(
-            current.rotation[0] + baseRot[0],
-            current.rotation[1] + baseRot[1],
-            current.rotation[2] + baseRot[2]
-        )
+      new THREE.Euler(
+        current.rotation[0] + baseRotation[0],
+        current.rotation[1] + baseRotation[1],
+        current.rotation[2] + baseRotation[2]
+      )
     );
     groupRef.current.quaternion.slerp(targetQuat, 0.08);
 
@@ -104,7 +130,7 @@ const baseRotations = {
 
   return (
     <>
-      <group ref={groupRef} key={variant}>
+      <group ref={groupRef} key={modelPath}>
         <primitive object={sceneObj} dispose={null} />
       </group>
       <OrbitControls />
@@ -112,8 +138,5 @@ const baseRotations = {
   );
 }
 
-// Preload models
-useGLTF.preload("/models/blue_nike_1.glb");
-useGLTF.preload("/models/blue_nike_2.glb");
-useGLTF.preload("/models/nike.glb");
-useGLTF.preload("/models/nike_air_zoom.glb");
+// Preload the default model (optional)
+useGLTF.preload("/models/fantasy_town.glb");

@@ -37,20 +37,25 @@ export default function App() {
   const sections = [
     { id: "hero", type: "hero", title: "The New Motion", subtitle: "Sculpted for speed and comfort.", cta: "Shop Now" },
     { id: "features", title: "Engineered Performance", subtitle: "Featherlight, breathable, responsive.", align: "right" },
-    { id: "materials", title: "Premium Materials", subtitle: "Sustainably sourced, long-lasting.", align: "left" },
-    { id: "cta", title: "Limited Release", subtitle: "Secure yours today.", align: "center" },
+    { id: "materials", title: "", subtitle: "", align: "left" },
+    { id: "cta", title: "", subtitle: "", align: "center" },
+    { id: "features1", title: "", subtitle: "", align: "right" },
+    { id: "materials1", title: "Premium Materials", subtitle: "Sustainably sourced, long-lasting.", align: "left" },
+    { id: "cta1", title: "Limited Release", subtitle: "Secure yours today.", align: "center" },
+    { id: "features2", title: "", subtitle: "", align: "right" },
+    { id: "materials2", title: "", subtitle: "", align: "left" },
+    { id: "cta2", title: "Limited Release", subtitle: "Secure yours today.", align: "center" },
+    { id: "features3", title: "Engineered Performance", subtitle: "Featherlight, breathable, responsive.", align: "right" },
+    { id: "materials3", title: "", subtitle: "", align: "left" },
+    { id: "cta3", title: "Limited Release", subtitle: "Secure yours today.", align: "center" },
+    { id: "features4", title: "", subtitle: "", align: "right" },
+    { id: "materials4", title: "", subtitle: "", align: "left" },
+    { id: "cta4", title: "Limited Release", subtitle: "Secure yours today.", align: "center" },
+    { id: "features5", title: "Engineered Performance", subtitle: "Featherlight, breathable, responsive.", align: "right" },
   ];
 
   return (
-    <div className={`relative min-h-screen text-white overflow-x-hidden transition-colors duration-500 ${
-      variant === "red"
-        ? "bg-red-900"
-        : variant === "blue"
-        ? "bg-blue-900"
-        : variant === "green"
-        ? "bg-blue-700"
-        : "bg-yellow-900"
-    }`}>
+    <div className="relative min-h-screen text-white overflow-x-hidden transition-colors duration-500 bg-pink-400">
       <div className='fixed h-screen w-full'>
       <ShoeCanvas sectionIndex={sectionIndex} isMobile={isMobile} variant={variant}/>
       </div>
