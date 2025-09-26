@@ -48,7 +48,7 @@ export default function Hero({ title, subtitle, cta, variant, setVariant, isActi
 
       <motion.header
         className={`
-          relative w-full max-w-3xl mx-auto px-6 text-center
+          relative w-full mx-auto px-6 text-center
           pointer-events-${isActive ? "auto" : "none"}
         `}
         initial="hidden"
@@ -61,7 +61,7 @@ export default function Hero({ title, subtitle, cta, variant, setVariant, isActi
           variants={titleVariants}
           className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight
                      bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent
-                     drop-shadow-[0_4px_24px_rgba(255,255,255,0.25)]"
+                     drop-shadow-[0_4px_24px_rgba(255,255,255,0.25)] "
         >
           {title}
         </motion.h1>
