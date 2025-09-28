@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import ShoeCanvas from "./components/ShoeCanvas";
 import Hero from "./components/Hero";
 import Section from "./components/Section";
-import SplashCursor from "./components/SplashCursor";
+
 export default function App() {
   const [sectionIndex, setSectionIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -38,10 +38,24 @@ export default function App() {
     { 
       id: "hero",
       type: "hero",
-      title: "The Enchanted Keep",
+      title: "",
       subtitle:
-        "On the night the silver moon returned, the old road found our feet again. The forest hushed, and the owls kept watch as starlight threaded the brambles. Beyond the hill, a keep breathed softly, its windows like lanterns in a sea of night. We took one step, then another, and the gates—long asleep—remembered our names.",
-      cta: "Begin the Journey"
+        "",
+      cta: "",
+      images: [
+        {
+          src: "/monster1.png",
+          alt: "grain",
+          className:
+            "pointer-events-none absolute inset-0 w-full h-full object-cover",
+        },
+        // {
+        //   src: "/images/hero/badge.png",
+        //   alt: "badge",
+        //   className:
+        //     "absolute right-6 top-6 w-24 md:w-32 drop-shadow-xl rotate-6",
+        // },
+      ],
     },    
   
     { id: "features",  title: "Whispers of Old", subtitle: "Legends speak of towers that touch the stars.", align: "right" },
@@ -56,29 +70,57 @@ export default function App() {
     { id: "materials2",title: "Ink and Moonwater", subtitle: "Words stitched with silver, bound in dusk-blue hide.", align: "left" },
     { id: "cta2",      title: "The Bridge of Echoes", subtitle: "Cross, and the castle reveals its heart.", align: "center" },
   
-    { id: "features3", title: "Guardians Awaken", subtitle: "Stone gargoyles stir when shadows fall.", align: "right" },
-    { id: "materials3",title: "Garden in the Sky", subtitle: "Vines hum lullabies; the roses answer back.", align: "left" },
-    { id: "cta3",      title: "The Great Hall Beckons", subtitle: "Candles float, and music fills the air.", align: "center" },
+    { id: "features3", title: "Guardians Awaken", subtitle: "Stone gargoyles stir when shadows fall.", align: "right",
+      images: [
+        {
+          src: "/backhand.png",
+          alt: "grain",
+          className:
+            "pointer-events-none absolute inset-0 w-fit h-fit hidden md:block object-cover -z-10",
+        },
+        {
+          src: "/backhand_mobile.png",
+          alt: "grain",
+          className:
+            "pointer-events-none absolute w-fit h-[50vh] md:hidden block object-cover -z-10 bottom-50 -left-24",
+        },
+        {
+          src: "/fronthands.png",
+          alt: "grain",
+          className:
+            "pointer-events-none absolute right-0 w-fit h-fit object-cover hidden md:block",
+        },
+
+        {
+          src: "/fronthands_mobile.png",
+          alt: "grain",
+          className:
+            "pointer-events-none absolute right-0 w-full h-[50vh] bottom-0 object-cover md:hidden block",
+        },
+      
+      ]
+     },
   
-    { id: "features4", title: "The Mirror Stair", subtitle: "Each step shows the life you almost took.", align: "right" },
-    { id: "materials4",title: "Threads of Dawn", subtitle: "Tapestries ripple with tomorrow’s weather.", align: "left" },
-    { id: "cta4",      title: "Secrets of the Keep", subtitle: "Follow the spiral stair; wonders await.", align: "center" },
-  
-    { id: "features5", title: "Life Within", subtitle: "Gardens in the sky, fountains that sing, halls that breathe magic.", align: "right" },
   ];
   
   
 
   return (
     
-    <div className="relative h-screen text-white overflow-x-hidden transition-colors duration-500 bg-pink-900">
-      <div className="fixed inset-0 h-screen w-full">
-      <SplashCursor/>
+    <div className="relative h-screen text-white overflow-x-hidden transition-colors duration-500 ">
+
+      {/* Background image layer — control its z here */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 -z-10 bg-[url('/monster3.jpg')] bg-no-repeat bg-cover bg-center"
+    />
+      <div className="fixed inset-0 h-screen w-full z-0">
 
         <ShoeCanvas sectionIndex={sectionIndex} isMobile={isMobile} variant={variant} />
       </div>
 
-      <main className="relative z-10 h-screen overflow-y-scroll snap-y snap-mandatory">
+
+      <main className="relative h-screen overflow-y-scroll snap-y snap-mandatory z-15">
         {sections.map((s, i) => {
           const isActive = sectionIndex === i;
           return (
@@ -96,7 +138,8 @@ export default function App() {
                   cta={s.cta}
                   variant={variant}
                   setVariant={setVariant}
-                  isActive={isActive}      // 👈 control appearance
+                  isActive={isActive} 
+                  images={s.images}     // 👈 control appearance
                 />
               ) : (
                 <Section
@@ -104,6 +147,7 @@ export default function App() {
                   subtitle={s.subtitle}
                   align={s.align}
                   isActive={isActive}      // 👈 control appearance
+                  images={s.images}
                 />
               )}
             </div>

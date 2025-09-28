@@ -1,6 +1,6 @@
 // src/components/Section.jsx
 import { motion } from "framer-motion";
-import Fog from "./Fog";
+
 
 const container = {
   hidden: { opacity: 0, filter: "blur(10px)" },
@@ -24,7 +24,7 @@ const mistReveal = {
   }
 };
 
-export default function Section({ title, subtitle, align = "center", isActive = false }) {
+export default function Section({ title, subtitle, align = "center", isActive = false, images = [] }) {
   const alignment =
     align === "right"
       ? "items-end text-right ml-auto"
@@ -35,6 +35,28 @@ export default function Section({ title, subtitle, align = "center", isActive = 
   return (
     <div className="relative h-screen w-full flex items-center px-6 md:px-20">
       {/* <Fog active={isActive} /> */}
+
+      {/* Custom image layers (each with independent styling) */}
+            <div className="pointer-events-none absolute inset-0">
+              {images.map((img, i) => {
+                const ImgTag = img.variants || img.initial || img.animate || img.transition ? motion.img : "img";
+                return (
+                  <ImgTag
+                    key={i}
+                    src={img.src}
+                    alt={img.alt || ""}
+                    className={img.className || ""}
+                    style={img.style || {}}
+                    loading="lazy"
+                    draggable={false}
+                    {...("initial" in img ? { initial: img.initial } : {})}
+                    {...("animate" in img ? { animate: isActive ? img.animate : "hidden" } : {})}
+                    {...("variants" in img ? { variants: img.variants } : {})}
+                    {...("transition" in img ? { transition: img.transition } : {})}
+                  />
+                );
+              })}
+            </div>
 
       <motion.section
         className={`relative w-full max-w-2xl ${alignment}

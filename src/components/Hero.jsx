@@ -1,6 +1,6 @@
 // src/components/Hero.jsx
 import { motion } from "framer-motion";
-import Fog from "./Fog";
+
 
 const heroVariants = {
   hidden: { opacity: 0, scale: 0.99, filter: "blur(10px)" },
@@ -41,10 +41,33 @@ const ctaVariants = {
   }
 };
 
-export default function Hero({ title, subtitle, cta, variant, setVariant, isActive = false }) {
+export default function Hero({ title, subtitle, cta, variant, setVariant, isActive = false, images = [] }) {
   return (
-    <div className="relative w-full h-full flex items-center justify-center">
-      <Fog active={isActive} />
+    <div className="w-full h-full flex items-center justify-center">
+      {/* <img src={monster1} alt="" className="w-full h-full absolute -z-10" /> */}
+
+      {/* Custom image layers (each with independent styling) */}
+      <div className="pointer-events-none absolute inset-0">
+        {images.map((img, i) => {
+          const ImgTag = img.variants || img.initial || img.animate || img.transition ? motion.img : "img";
+          return (
+            <ImgTag
+              key={i}
+              src={img.src}
+              alt={img.alt || ""}
+              className={img.className || ""}
+              style={img.style || {}}
+              loading="lazy"
+              draggable={false}
+              {...("initial" in img ? { initial: img.initial } : {})}
+              {...("animate" in img ? { animate: isActive ? img.animate : "hidden" } : {})}
+              {...("variants" in img ? { variants: img.variants } : {})}
+              {...("transition" in img ? { transition: img.transition } : {})}
+            />
+          );
+        })}
+      </div>
+
 
       <motion.header
         className={`
@@ -61,7 +84,7 @@ export default function Hero({ title, subtitle, cta, variant, setVariant, isActi
           variants={titleVariants}
           className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight
                      bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent
-                     drop-shadow-[0_4px_24px_rgba(255,255,255,0.25)] "
+                     drop-shadow-[0_4px_24px_rgba(255,255,255,0.25)]"
         >
           {title}
         </motion.h1>

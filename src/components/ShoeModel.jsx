@@ -6,7 +6,7 @@ import * as THREE from "three";
 export default function ShoeModel({
   sectionIndex,
   isMobile,
-  modelPath = "/models/fantasy_town.glb", // <-- change this or pass prop
+  modelPath = "/models/monster_energy_drink.glb", // <-- change this or pass prop
 }) {
   const groupRef = useRef();
   const [sceneObj, setSceneObj] = useState(null);
@@ -42,51 +42,31 @@ export default function ShoeModel({
 
   // Transforms per section (keep your existing values)
   const desktopTransforms = [
-    { position: [0, -1, 0], rotation: [0, 1, 0], scale: 2 },
-    { position: [-2, -1, 0], rotation: [0, 1.5, 0], scale: 3 },
-    { position: [-3.5, -2, 0], rotation: [0, 1.5, 0], scale: 5 },
-    { position: [-5, -4, 0], rotation: [0, 1.5, 0], scale: 7 },
-    { position: [-7.5, -6, 0], rotation: [0, 1.5, 0], scale: 10 },
-    { position: [0.7, -3.2, 2], rotation: [0, 0, 0], scale: 5 },
-    { position: [0.7, -1, -5], rotation: [1, 0, 0], scale: 5 },
-    { position: [0.7, -1, -2], rotation: [1, 0, 0], scale: 5 },
-    { position: [0.7, -1, 1], rotation: [1, 0, 0], scale: 5 },
-    { position: [-1, -1.5, 4], rotation: [0, 0, 0], scale: 5 },
-    { position: [-1, -1.5, 7], rotation: [0, 0, 0], scale: 5 },
-    { position: [-2, -1.2, 7], rotation: [0, -1, 0], scale: 5 },
-    { position: [-2.5, -1.2, 6], rotation: [0, -1.5, 0], scale: 5 },
-    { position: [-2.5, -2, 5], rotation: [0.6, -1.5, 0], scale: 5 },
-    { position: [-2.5, -1.8, 7], rotation: [0.4, -1.5, 0], scale: 5 },
-    { position: [3, -1.2, -2], rotation: [0, -4.8, 0], scale: 5 },
-    { position: [0, -1, 0], rotation: [0, 1, 0], scale: 2 },
+    { position: [0, 0, 0], rotation: [0, -2.3, 0], scale: 10 },
+    { position: [-2, -1, 0], rotation: [1, 0, -0.5], scale: 20 },
+    { position: [2, 1, 0], rotation: [0, -2.5, 0], scale: 25 },
+    { position: [-2, 0, 0], rotation: [1, -4, -1], scale: 15 },
+    { position: [0, -1.5, 0], rotation: [0,0,1.55], scale: 25 },
+    { position: [0, -1.5, 0], rotation: [2,0,1.55], scale: 25 },
+    { position: [0, -1.5, 0], rotation: [4,0,1.55], scale: 25 },
+    { position: [0, -1.5, 0], rotation: [6,0,1.55], scale: 25 },
+    { position: [0, -1.5, 0], rotation: [8,0,1.55], scale: 25 },
+    { position: [0, 0, 0], rotation: [0, -2.3, 0], scale: 10 },
+    { position: [0, 0, 0], rotation: [0, -2.3, -1], scale: 15 },
   ];
 
   const mobileTransforms = [
-    { position: [0, -1, -1], rotation: [0, 1, 0], scale: 2 },
-    { position: [-2.5, -1, -1], rotation: [0, 1.5, 0], scale: 3 },
-    { position: [-4, -2, -1], rotation: [0, 1.5, 0], scale: 5 },
-    // { position: [-6, -4, -1], rotation: [0, 1.5, 0], scale: 7 },
-    // { position: [-8.5, -6, -1], rotation: [0, 1.5, 0], scale: 10 },
-    { position: [0.7, -3.8, 4], rotation: [0, 0, 0], scale: 5 },
-    { position: [0.7, -1, -5], rotation: [1, 0, 0], scale: 5 },
-    { position: [0.7, -1, -10], rotation: [1, 0, 0], scale: 5 },
-    { position: [0.7, -1, -20], rotation: [1, 0, 0], scale: 5 },
-    { position: [0, 1, -20], rotation: [1.5, 0, 0], scale: 5 },
-    { position: [0, 1, -30], rotation: [1.5, 0, 0], scale: 5 },
-    { position: [-2, 1, -30], rotation: [1.5, 0, 0], scale: 5 },
-
-    { position: [0, -3, -30], rotation: [0, 0, 0], scale: 5 },
-    
-    { position: [0, -3, -20], rotation: [0, -0.5, 0], scale: 5 },
-
-    { position: [0, -3, -20], rotation: [0, -1.5, 0], scale: 5 },
-    { position: [0, -3, -20], rotation: [0, -2.5, 0], scale: 5 },
-    { position: [0, -3, -20], rotation: [0, -3.5, 0], scale: 5 },
-
-
-    { position: [0, -3, -20], rotation: [0, -4.5, 0], scale: 5 },
-
-    { position: [0, -1, -20], rotation: [0, -5, 0], scale: 2 },
+    { position: [0, 0, 0], rotation: [0, -2.3, 0], scale: 10 },
+    { position: [-1, -1, 0], rotation: [1, 0, -0.5], scale: 20 },
+    { position: [0, 0, 0], rotation: [0, -2.3, 0], scale: 25 },
+    { position: [0, 0, 0], rotation: [1, -4, -1], scale: 15 },
+    { position: [0, -1.5, 0], rotation: [0,0,1.55], scale: 10 },
+    { position: [0, -1.5, 0], rotation: [2,0,1.55], scale: 10 },
+    { position: [0, -1.5, 0], rotation: [4,0,1.55], scale: 10 },
+    { position: [0, -1.5, 0], rotation: [6,0,1.55], scale: 10 },
+    { position: [0, -1.5, 0], rotation: [8,0,1.55], scale: 10 },
+    { position: [0, 0, 0], rotation: [0, -2.3, 0], scale: 10 },
+    { position: [0, 0, 0], rotation: [0, -2.3, 0], scale: 12 },
   ];
 
   const transforms = isMobile ? mobileTransforms : desktopTransforms;
@@ -139,4 +119,4 @@ const current = transforms[safeIndex];
 }
 
 // Preload the default model (optional)
-useGLTF.preload("/models/fantasy_town.glb");
+useGLTF.preload("/models/monster_energy_drink.glb");
