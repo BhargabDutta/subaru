@@ -76,7 +76,7 @@ export default function App() {
       id: "cta",
       title: "What’s Inside the Beast?",
       subtitle: "Taurine, caffeine, B-vitamins, ginseng, L-carnitine — every can of Monster is a loaded formula built to energize you fast, and keep you going longer.",
-      align: "center"
+      align: "right"
     },
   
     {
