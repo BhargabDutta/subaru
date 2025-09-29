@@ -156,7 +156,7 @@ export default function App() {
 
   return (
     
-    <div className="relative h-screen text-white overflow-x-hidden transition-colors duration-500 ">
+    <div className="relative h-screen text-white overflow-x-hidden transition-colors duration-500 bg-black/50">
 
       {/* Background image layer — control its z here */}
     <div
