@@ -70,7 +70,7 @@ export default function Section({ title, subtitle, align = "center", isActive = 
         {title && (
           <motion.h2
             variants={mistReveal}
-            className="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg"
+            className="text-6xl md:text-9xl font-extrabold mb-4 drop-shadow-lg"
           >
             {title}
           </motion.h2>
@@ -78,7 +78,7 @@ export default function Section({ title, subtitle, align = "center", isActive = 
         {subtitle && (
           <motion.p
             variants={mistReveal}
-            className="text-lg md:text-2xl/relaxed text-gray-200/90"
+            className="text-lg md:text-2xl/relaxed font-bold text-gray-200/90"
           >
             {subtitle}
           </motion.p>

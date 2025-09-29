@@ -58,7 +58,7 @@ export default function ShoeModel({
   const mobileTransforms = [
     { position: [0, 0, 0], rotation: [0, -2.3, 0], scale: 10 },
     { position: [-1, -1, 0], rotation: [1, 0, -0.5], scale: 20 },
-    { position: [0, 0, 0], rotation: [0, -2.3, 0], scale: 25 },
+    { position: [1.5, 1.5, 0], rotation: [0, -2.5, -0.5], scale: 15 },
     { position: [0, 0, 0], rotation: [1, -4, -1], scale: 15 },
     { position: [0, -1.5, 0], rotation: [0,0,1.55], scale: 10 },
     { position: [0, -1.5, 0], rotation: [2,0,1.55], scale: 10 },

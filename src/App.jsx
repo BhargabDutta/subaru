@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import ShoeCanvas from "./components/ShoeCanvas";
 import Hero from "./components/Hero";
 import Section from "./components/Section";
-
+import './App.css'
 export default function App() {
   const [sectionIndex, setSectionIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -58,19 +58,68 @@ export default function App() {
       ],
     },    
   
-    { id: "features",  title: "Whispers of Old", subtitle: "Legends speak of towers that touch the stars.", align: "right" },
-    { id: "materials", title: "Paths of Starlight", subtitle: "Moss-lit steps remember every footfall.", align: "left" },
-    { id: "cta",       title: "A Lantern Lights", subtitle: "Follow the glow; the night is gentle here.", align: "center" },
+    {
+      id: "features",
+      title: "Ignite Your Inner Beast",
+      subtitle: "More than just a drink—Monster fuels your grind, your hustle, your wild side. When limits call, we roar back.",
+      align: "right"
+    },    
+
+    {
+      id: "materials",
+      title: "Find Your Flavor, Fuel Your Fire",
+      subtitle: "From Original to Zero Sugar, Monster’s packed with bold flavor and unstoppable energy. Pick your power.",
+      align: "left"
+    },
+
+    {
+      id: "cta",
+      title: "What’s Inside the Beast?",
+      subtitle: "Taurine, caffeine, B-vitamins, ginseng, L-carnitine — every can of Monster is a loaded formula built to energize you fast, and keep you going longer.",
+      align: "center"
+    },
   
-    { id: "features1", title: "The Watchers", subtitle: "Owls with ember eyes measure the turning hours.", align: "right" },
-    { id: "materials1",title: "Walls of Wonder", subtitle: "Stone that glows with runes older than time.", align: "left" },
-    { id: "cta1",      title: "A Door Appears", subtitle: "Only those who believe may step inside.", align: "center" },
+    {
+      id: "features1",
+      title: "Next-Gen Energy",
+      subtitle: "",
+      align: "right"
+    },
+    {
+      id: "materials1",
+      title: "Join the Monster Family",
+      subtitle: "",
+      align: "left"
+    },
+    {
+      id: "cta1",
+      title: "Get in the Game",
+      subtitle: "",
+      align: "center"
+    },
   
-    { id: "features2", title: "Library of Winds", subtitle: "Pages flutter with voices of forgotten kings.", align: "right" },
-    { id: "materials2",title: "Ink and Moonwater", subtitle: "Words stitched with silver, bound in dusk-blue hide.", align: "left" },
-    { id: "cta2",      title: "The Bridge of Echoes", subtitle: "Cross, and the castle reveals its heart.", align: "center" },
+    {
+      id: "features2",
+      title: "Meet the Legends",
+      subtitle: "",
+      align: "right"
+    },
+
+    {
+      id: "materials2",
+      title: "Powering a Greener Future",
+      subtitle: "",
+      align: "left"
+    },
+
+    {
+      id: "cta2",
+      title: "Wear Your Power",
+      subtitle: "Gear up with Monster merch that hits as hard as the drink. Bold, iconic, untamed.",
+      align: "center"
+    },
   
-    { id: "features3", title: "Guardians Awaken", subtitle: "Stone gargoyles stir when shadows fall.", align: "right",
+    { id: "features3", title: "Let’s Connect", subtitle: "Got ideas, questions, or wild stories? Hit us up. The Monster squad is always listening.", align: "right",
       images: [
         {
           src: "/backhand.png",
