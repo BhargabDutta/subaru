@@ -1,6 +1,6 @@
 // src/App.jsx
 import { useEffect, useRef, useState } from "react";
-import ShoeCanvas from "./components/ShoeCanvas";
+import ModelCanvas from "./components/ModelCanvas";
 import Hero from "./components/Hero";
 import Section from "./components/Section";
 import './App.css'
@@ -38,113 +38,276 @@ export default function App() {
     { 
       id: "hero",
       type: "hero",
-      title: "",
+      title: "subaru",
       subtitle:
         "",
       cta: "",
-      images: [
-        {
-          src: "/monster1.png",
-          alt: "grain",
-          className:
-            "pointer-events-none absolute inset-0 w-full h-full object-cover",
-        },
-        // {
-        //   src: "/images/hero/badge.png",
-        //   alt: "badge",
-        //   className:
-        //     "absolute right-6 top-6 w-24 md:w-32 drop-shadow-xl rotate-6",
-        // },
-      ],
+      images: [],
     },    
   
     {
       id: "features",
-      title: "Ignite Your Inner Beast",
-      subtitle: "More than just a drink—Monster fuels your grind, your hustle, your wild side. When limits call, we roar back.",
-      align: "right"
+      title: "",
+      subtitle: "",
+      align: "right",
+      contents: [
+        {
+          id: "tl",
+          pos: "top-left",
+          title: "built to intimidate, not just impress.",
+          subtitle: "0–100 in 3.2s",
+          className: "max-w-xl",
+          
+        },
+        {
+          id: "bc",
+          pos: "center",
+          title: "stretch the limits",
+          subtitle: "",
+          className: "w-full text-transparent tracking-[0.3em] [-webkit-text-stroke:0.7px_white] [-webkit-text-fill-color:transparent]",
+        },
+        // Fine-grained position example:
+        {
+          id: "spec-badge",
+          pos: "bottom-right",
+          title: "turbocharged. temper unleashed.",
+          subtitle: "",
+          className: "max-w-fit text-right",
+         
+        },
+      ],
     },    
 
     {
       id: "materials",
-      title: "Find Your Flavor, Fuel Your Fire",
-      subtitle: "From Original to Zero Sugar, Monster’s packed with bold flavor and unstoppable energy. Pick your power.",
-      align: "left"
+      title: "born from boost, raised by grip",
+      subtitle: "",
+      align: "right",
+      titleClassName: "text-6xl md:text-7xl font-extrabold mb-4 drop-shadow-lg md:block hidden",
+      subtitleClassName: "text-lg md:text-2xl/relaxed font-bold text-gray-200/90 md:block hidden",
+      contents:[
+        {
+          id: "tl",
+          pos: "top-left",
+          title: "born from boost",
+          subtitle: "",
+          titleClassName: "text-5xl md:text-6xl md:hidden block",
+          subtitleClassName: "mt-2 md:mt-3 text-gray-300/90 italic",
+          
+        },
+        {
+          id: "spec-badge",
+          pos: "bottom-right",
+          title: "raised by grip",
+          subtitle: "",
+          titleClassName: "text-5xl md:text-6xl md:hidden block text-right",
+          subtitleClassName: "mt-2 md:mt-3 text-gray-300/90 italic",
+        },
+      ]
     },
 
     {
       id: "cta",
-      title: "What’s Inside the Beast?",
-      subtitle: "Taurine, caffeine, B-vitamins, ginseng, L-carnitine — every can of Monster is a loaded formula built to energize you fast, and keep you going longer.",
-      align: "right"
+      title: "forged in boost, crowned in lap times",
+      subtitle: "",
+      align: "right",
+      titleClassName: "text-6xl md:text-7xl font-extrabold mb-4 drop-shadow-lg md:block hidden",
+      subtitleClassName: "text-lg md:text-2xl/relaxed font-bold text-gray-200/90 md:block hidden",
+      contents:[
+        {
+          id: "tl",
+          pos: "top-left",
+          title: "forged in boost",
+          subtitle: "",
+          titleClassName: "text-5xl md:text-6xl md:hidden block",
+          subtitleClassName: "mt-2 md:mt-3 text-gray-300/90 italic",
+          
+        },
+        {
+          id: "br",
+          pos: "bottom-right",
+          title: "crowned in lap times",
+          subtitle: "",
+          titleClassName: "text-4xl md:text-6xl md:hidden block text-right",
+          subtitleClassName: "mt-2 md:mt-3 text-gray-300/90 italic",
+        },
+      ]
     },
   
     {
       id: "features1",
-      title: "Next-Gen Energy",
+      title: "every dent is weight reduction, every scar is speed",
       subtitle: "",
-      align: "right"
+      align: "right",
+      titleClassName: "text-6xl md:text-7xl font-extrabold mb-4 drop-shadow-lg md:block hidden",
+      subtitleClassName: "text-lg md:text-2xl/relaxed font-bold text-gray-200/90 md:block hidden",
+      contents:[
+        {
+          id: "tl",
+          pos: "top-left",
+          title: "every dent is weight reduction",
+          subtitle: "",
+          titleClassName: "text-4xl md:text-6xl md:hidden block",
+          subtitleClassName: "mt-2 md:mt-3 text-gray-300/90 italic",
+          
+        },
+        {
+          id: "br",
+          pos: "bottom-right",
+          title: "every scar is speed",
+          subtitle: "",
+          titleClassName: "text-5xl md:text-6xl md:hidden block text-right",
+          subtitleClassName: "mt-2 md:mt-3 text-gray-300/90 italic",
+        },
+      ]
     },
     {
       id: "materials1",
-      title: "Join the Monster Family",
+      title: "",
       subtitle: "",
-      align: "left"
+      align: "left",
+      contents:[
+        {
+          id: "tr",
+          pos: "top-right",
+          title: "aero",
+          subtitle: "downforce on demand",
+          className: "max-w-xs",
+          target: { x: 100, y: 30 },
+          attach: { within: { x: 40, y: 80 } }, 
+          mobile: {
+            pos: "top-right",
+            className: "w-fit border",
+            titleClassName:"text-sm",
+            subtitleClassName:"text-xs",
+            target: { x: 82, y: 24 },
+            attach: { x: 50, y: 90 },
+          },
+        },
+        {
+          id: "tl",
+          pos: "bottom-left",
+          title: "side skirt",
+          subtitle: "downforce on demand",
+          className: "max-w-xs",
+          target: { x: 50, y: 75 },
+          attach: { within: { x: 70, y: 50 } }, 
+          mobile: {
+            pos: "bottom-right",
+            className: "w-fit border",
+            titleClassName:"text-sm",
+            subtitleClassName:"text-xs",
+            target: { x: 82, y: 64 },
+            attach: { x: 50, y: 90 },
+          },
+          
+        },
+        {
+          id: "bc",
+          pos: "top-left",
+          title: "bucket seat",
+          subtitle: "downforce on demand",
+          className: "max-w-xs",
+          target: { x: 65, y: 30 },
+          attach: { within: { x: 40, y: 80 } }, 
+          mobile: {
+            pos: "center-left",
+            className: "w-40 border mt-[15vh]",
+            titleClassName:"text-sm",
+            subtitleClassName:"text-xs",
+            target: { x: 42, y: 44 },
+            attach: {  x: 50, y: 90 },
+          },
+        },
+      ]
     },
     {
       id: "cta1",
-      title: "Get in the Game",
+      title: "",
       subtitle: "",
-      align: "center"
+      align: "center",
+      contents: [
+        {
+          id: "tl",
+          pos: "top-left",
+          title: "launch control",
+          subtitle: "0–100 in 3.2s",
+          className: "max-w-full",
+          target: { x: 30, y: 35 },
+          attach: { within: { x: 50, y: 90 } }, 
+          // ↑ attach INSIDE the label box:
+          //    10% from its left, 80% from its top
+          mobile: {
+            pos: "bottom-left",
+            className: "w-40 border mt-[15vh]",
+            titleClassName:"text-sm",
+            subtitleClassName:"text-xs",
+            target: { x: 32, y: 64 },
+            attach: {  x: 50, y: 90 },
+          },
+        },
+        {
+          id: "bc",
+          pos: "bottom-center",
+          title: "track mode",
+          subtitle: "torque bias, stiffened dampers",
+          className: "max-w-sm",
+          targets: [
+            { x: 20, y: 65, attach: { within: { x: -10, y: 10 } } },
+            { x: 90, y: 65, attach: { within: { x: 80, y: 10 } } },
+          ],
+          mobile: {
+            pos: "top-right",
+            className: "w-[70vw] border",
+            titleClassName:"text-sm",
+            subtitleClassName:"text-xs",
+            targets: [
+              { x: 80, y: 85, attach: { x: 0, y: 0 } },
+              { x: 85, y: 35, attach: { x: 0, y: 0 }  },
+            ],
+            attach: {  x: 50, y: 90 },
+          },
+       
+        },
+        // Fine-grained position example:
+        // {
+        //   id: "spec-badge",
+        //   style: { top: "28%", left: "64%" },
+        //   title: "710 HP",
+        //   subtitle: "hybrid twin-turbo",
+        //   className: "max-w-[12rem] text-right",
+        // },
+      ],
     },
   
     {
       id: "features2",
-      title: "Meet the Legends",
+      title: "legends don’t retire",
       subtitle: "",
       align: "right"
     },
 
     {
       id: "materials2",
-      title: "Powering a Greener Future",
+      title: "no mercy only apex",
       subtitle: "",
       align: "left"
     },
 
     {
       id: "cta2",
-      title: "Wear Your Power",
-      subtitle: "Gear up with Monster merch that hits as hard as the drink. Bold, iconic, untamed.",
+      title: "",
+      subtitle: "",
       align: "center"
     },
   
-    { id: "features3", title: "Let’s Connect", subtitle: "Got ideas, questions, or wild stories? Hit us up. The Monster squad is always listening.", align: "right",
+    { id: "features3", title: "", subtitle: "", align: "right",
       images: [
         {
-          src: "/backhand.png",
+          src: "",
           alt: "grain",
           className:
             "pointer-events-none absolute inset-0 w-fit h-fit hidden md:block object-cover -z-10",
-        },
-        {
-          src: "/backhand_mobile.png",
-          alt: "grain",
-          className:
-            "pointer-events-none absolute w-fit h-[50vh] md:hidden block object-cover -z-10 bottom-50 -left-24",
-        },
-        {
-          src: "/fronthands.png",
-          alt: "grain",
-          className:
-            "pointer-events-none absolute right-0 w-fit h-fit object-cover hidden md:block",
-        },
-
-        {
-          src: "/fronthands_mobile.png",
-          alt: "grain",
-          className:
-            "pointer-events-none absolute right-0 w-full h-[50vh] bottom-0 object-cover md:hidden block",
         },
       
       ]
@@ -156,16 +319,16 @@ export default function App() {
 
   return (
     
-    <div className="relative h-screen text-white overflow-x-hidden transition-colors duration-500 bg-black/50">
+    <div className="relative h-screen text-white overflow-x-hidden transition-colors duration-500 bg-black">
 
       {/* Background image layer — control its z here */}
-    <div
+    {/* <div
       aria-hidden
       className="pointer-events-none absolute inset-0 -z-10 bg-[url('/monster3.jpg')] bg-no-repeat bg-cover bg-center"
-    />
+    /> */}
       <div className="fixed inset-0 h-screen w-full z-0">
 
-        <ShoeCanvas sectionIndex={sectionIndex} isMobile={isMobile} variant={variant} />
+        <ModelCanvas sectionIndex={sectionIndex} isMobile={isMobile} variant={variant} />
       </div>
 
 
@@ -197,6 +360,10 @@ export default function App() {
                   align={s.align}
                   isActive={isActive}      // 👈 control appearance
                   images={s.images}
+                  contents={s.contents}
+                  isMobile={isMobile}
+                  titleClassName={s.titleClassName}
+                  subtitleClassName={s.subtitleClassName}
                 />
               )}
             </div>

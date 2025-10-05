@@ -1,17 +1,17 @@
 /* Define the Monster Energy font */
 @font-face {
-  font-family: 'MonsterEnergy';
-  src: url('/fonts/Green_Energy.ttf') format('truetype');
+  font-family: 'Dream';
+  src: url('/fonts/Dream.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 /* Apply the font to the body */
 body {
-  font-family: 'MonsterEnergy', sans-serif;
+  font-family: 'Dream';
 }
 
 /* Optional: You can apply this font to specific sections or components if needed */
 h1, h2, h3, p {
-  font-family: 'MonsterEnergy', sans-serif;
+  font-family: 'Dream';
 }

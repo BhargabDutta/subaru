@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        monster: ['MonsterEnergy', 'sans-serif'],
+        monster: ['Dream', 'sans-serif'],
       },
     },
   },

@@ -82,9 +82,8 @@ export default function Hero({ title, subtitle, cta, variant, setVariant, isActi
       >
         <motion.h1
           variants={titleVariants}
-          className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight
-                     bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent
-                     drop-shadow-[0_4px_24px_rgba(255,255,255,0.25)]"
+          className="pt-4 text-transparent font-extrabold mb-6 text-5xl md:text-9xl
+             [-webkit-text-stroke:1px_white] [-webkit-text-fill-color:transparent]"
         >
           {title}
         </motion.h1>
