@@ -193,7 +193,7 @@ export default function App() {
           attach: { within: { x: 70, y: 50 } }, 
           mobile: {
             pos: "bottom-right",
-            className: "w-fit border mb-[20px]",
+            className: "w-fit border mb-[30px]",
             titleClassName:"text-sm",
             subtitleClassName:"text-xs",
             target: { x: 82, y: 64 },
@@ -238,8 +238,8 @@ export default function App() {
           //    10% from its left, 80% from its top
           mobile: {
             pos: "bottom-left",
-            className: "w-40 border mt-[10vh]",
-            titleClassName:"text-sm",
+            className: "w-40 border mb-[20px]",
+            titleClassName:"text-sm ",
             subtitleClassName:"text-xs",
             target: { x: 32, y: 64 },
             attach: {  x: 50, y: 90 },
