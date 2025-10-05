@@ -72,8 +72,7 @@ export default function App() {
           pos: "bottom-right",
           title: "turbocharged. temper unleashed.",
           subtitle: "",
-          className: "max-w-fit text-right",
-         
+          className: "max-w-fit text-right md:mb-[0px] mb-[20px]",
         },
       ],
     },    
@@ -100,7 +99,7 @@ export default function App() {
           pos: "bottom-right",
           title: "raised by grip",
           subtitle: "",
-          titleClassName: "text-5xl md:text-6xl md:hidden block text-right",
+          titleClassName: "text-5xl md:text-6xl md:hidden block text-right  mb-[20px]",
           subtitleClassName: "mt-2 md:mt-3 text-gray-300/90 italic",
         },
       ]
