@@ -193,7 +193,7 @@ export default function App() {
           attach: { within: { x: 70, y: 50 } }, 
           mobile: {
             pos: "bottom-right",
-            className: "w-fit border mb-[30px]",
+            className: "w-fit border mb-[40px]",
             titleClassName:"text-sm",
             subtitleClassName:"text-xs",
             target: { x: 82, y: 64 },
@@ -238,7 +238,7 @@ export default function App() {
           //    10% from its left, 80% from its top
           mobile: {
             pos: "bottom-left",
-            className: "w-40 border mb-[20px]",
+            className: "w-40 border mb-[40px]",
             titleClassName:"text-sm ",
             subtitleClassName:"text-xs",
             target: { x: 32, y: 64 },
@@ -283,7 +283,8 @@ export default function App() {
       id: "features2",
       title: "legends don’t retire",
       subtitle: "",
-      align: "right"
+      titleClassName:"text-5xl",
+      align: "right",
     },
 
     {
