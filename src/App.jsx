@@ -99,7 +99,7 @@ export default function App() {
           pos: "bottom-right",
           title: "raised by grip",
           subtitle: "",
-          titleClassName: "text-5xl md:text-6xl md:hidden block text-right  mb-[20px]",
+          titleClassName: "text-5xl md:text-6xl md:hidden block text-right mb-[20px]",
           subtitleClassName: "mt-2 md:mt-3 text-gray-300/90 italic",
         },
       ]
@@ -127,7 +127,7 @@ export default function App() {
           pos: "bottom-right",
           title: "crowned in lap times",
           subtitle: "",
-          titleClassName: "text-4xl md:text-6xl md:hidden block text-right",
+          titleClassName: "text-4xl md:text-6xl md:hidden block text-right mb-[20px]",
           subtitleClassName: "mt-2 md:mt-3 text-gray-300/90 italic",
         },
       ]
@@ -155,7 +155,7 @@ export default function App() {
           pos: "bottom-right",
           title: "every scar is speed",
           subtitle: "",
-          titleClassName: "text-5xl md:text-6xl md:hidden block text-right",
+          titleClassName: "text-5xl md:text-6xl md:hidden block text-right mb-[20px]",
           subtitleClassName: "mt-2 md:mt-3 text-gray-300/90 italic",
         },
       ]
@@ -193,7 +193,7 @@ export default function App() {
           attach: { within: { x: 70, y: 50 } }, 
           mobile: {
             pos: "bottom-right",
-            className: "w-fit border",
+            className: "w-fit border mb-[20px]",
             titleClassName:"text-sm",
             subtitleClassName:"text-xs",
             target: { x: 82, y: 64 },
@@ -238,7 +238,7 @@ export default function App() {
           //    10% from its left, 80% from its top
           mobile: {
             pos: "bottom-left",
-            className: "w-40 border mt-[15vh]",
+            className: "w-40 border mt-[10vh]",
             titleClassName:"text-sm",
             subtitleClassName:"text-xs",
             target: { x: 32, y: 64 },
